@@ -28,7 +28,7 @@
 
     <div class="loginbo" id='#app4'> 
      <!-- <img src=2.png  class="avatar"> -->
-        <form> 
+        <form  method='post'> 
           <h1>Sign Up</h1>
           
          

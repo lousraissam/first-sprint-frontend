@@ -28,7 +28,7 @@
 
     <div class="loginbo" id='#app4'> 
      <!-- <img src=2.png  class="avatar"> -->
-        <form> 
+        <form  method='post'> 
           <h1>Sign Up</h1>
           
          
@@ -104,18 +104,16 @@ export default {
        }
        
  axios.post('http://localhost:5000/api/register', newUser ,{headers: {
-      'Content-type': 'application/x-www-form-urlencoded',
-      
+      'Content-type': 'application/json',
       
       }})
 
        .then((res) => {
-         this.values = res.data;
       console.log("RESPONSE RECEIVED: ", res);
       this.$router.push('/signin');
     })
     .catch((err) => {
-      console.log(err);
+      console.log(err.response);
     })
   },
     validateEmail(value){

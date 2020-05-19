@@ -31,11 +31,11 @@
 		<h1>Sign In</h1>
 		<form>
 			<p>Email</p>
-			<input type="text"  V-model="name" placeholder="Enter your Email">
+			<input type="text"  V-model="email" placeholder="Enter your Email">
             
 			<p>password </p>
-			<input type="password" V-model="mdp" placeholder="Enter your password ">
-			<input type="submit"  value="login ">
+			<input type="password" V-model="password" placeholder="Enter your password ">
+			<input type="submit"  value="login " @click="login" >
             
 			<center><a href="password.html">Forget your password?</a><br>
              
@@ -62,3 +62,38 @@
     
     </div>
 </template>
+
+<script>
+import axios from 'axios';
+export default {
+  name: 'signin',
+  data() {
+    return {
+      email: '',
+      password: '',
+      error: '',
+    }
+  },
+  methods: {
+    login() {
+      let user = {
+        email: this.email,
+        password: this.password
+      }    
+      axios.post('http://localhost:5000/api/login', user ,{headers: {
+      'Content-type': 'application/x-www-form-urlencoded',
+      }})
+        .then(res => {
+          //if successfull
+          if (res.status === 200) {
+            localStorage.setItem('token', res.data.token);
+            this.$router.push('/signin');
+          }
+        }, err => {
+          console.log(err.response);
+          this.error = err.response.data.error
+        })
+    }
+  }
+}
+</script>

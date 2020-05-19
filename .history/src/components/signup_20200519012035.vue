@@ -28,7 +28,7 @@
 
     <div class="loginbo" id='#app4'> 
      <!-- <img src=2.png  class="avatar"> -->
-        <form> 
+        <form  method='post'> 
           <h1>Sign Up</h1>
           
          
@@ -110,12 +110,11 @@ export default {
       }})
 
        .then((res) => {
-         this.values = res.data;
       console.log("RESPONSE RECEIVED: ", res);
       this.$router.push('/signin');
     })
     .catch((err) => {
-      console.log(err);
+      console.log(err.response);
     })
   },
     validateEmail(value){

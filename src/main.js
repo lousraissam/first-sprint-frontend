@@ -4,8 +4,13 @@ import VueRouter from 'vue-router';
 import VueResource from 'vue-resource';
 import Routes from './routes';
 import store from './store';
+import axios from 'axios';
+import VueAxios from 'vue-axios';
+
 Vue.use(VueResource);
 Vue.use(VueRouter);
+Vue.use(axios);
+Vue.use(VueAxios);
 
 
   const router = new VueRouter({
