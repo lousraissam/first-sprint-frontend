@@ -63,8 +63,9 @@
     </div>
 </template>
 <script>
-const fetch = require('node-fetch');
 
+import axios from 'axios';
+ import qs from "qs";
 export default {
   name: 'Test',
   data(){
@@ -95,32 +96,29 @@ export default {
   methods:{
     signup()  
     {
-      const body = {
+      let newUser = {
         name: this.name,
         email: this.email,
         password: this.password,
        }
-       console.log(body);
+       console.log(newUser);
        
- fetch('http://localhost:5000/api/register', {
-   method:'post',
-   body:JSON.stringify(body),
-   headers: {
-                'Content-Type': 'application/json',
-                Accept:"application/json",
-            }
-  
-  })
+ axios.post('http://localhost:5000/api/register', qs.stringify(newUser) ,{headers: {
+      'Content-type': 'application/x-www-form-urlencoded',
+      'Content-Type':'application/json',
+         Accept: 'application/json',
+      }, 
+      })
 
-  .then((res) => res.json())
-            .then((data) =>  console.log(data))
-            .catch((err)=>console.log(err));
-   
+       .then((res) => {
+        
+      console.log("RESPONSE RECEIVED: ", res);
+    })
+    .catch((err) => {
+      console.log(err.response.data);
+      console.log(err);
+    })
   },
-       
- 
-   
-
     validateEmail(value){
       if (/^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(value))
   {

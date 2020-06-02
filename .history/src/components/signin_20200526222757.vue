@@ -95,7 +95,6 @@ export default {
           //if successfull
           if (res.status === 200) {
             localStorage.setItem('token', res.data.token);
-            
           }
         })
         .catch((err)=>console.log(err))

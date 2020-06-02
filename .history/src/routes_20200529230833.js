@@ -7,6 +7,8 @@ import dashboardMaire from './components/dashboardMaire.vue';
 import dashboardResponsable from './components/dashboardResponsable.vue';
 import dashboardAdmin from './components/dashboardAdmin.vue';
 
+
+
 export default [
 { path : '/' , component :index },
 { path : '/contactus', component : contactus },
@@ -16,7 +18,9 @@ export default [
 { path : '/dashboardMaire', component : dashboardMaire },
 { path : '/dashboardResponsable', component : dashboardResponsable },
 { path : '/dashboardAdmin', component : dashboardAdmin },
-//{ path : <p>${process.env.CLIENT_URL}/users/Activate${token}</p> , component : signin}
+
+
+
 ];
 
 

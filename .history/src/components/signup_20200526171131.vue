@@ -63,7 +63,9 @@
     </div>
 </template>
 <script>
-const fetch = require('node-fetch');
+
+
+import fetch from 'fetch';
 
 export default {
   name: 'Test',
@@ -114,13 +116,9 @@ export default {
 
   .then((res) => res.json())
             .then((data) =>  console.log(data))
-            .catch((err)=>console.log(err));
-   
+            .catch((err)=>console.log(err))
+    
   },
-       
- 
-   
-
     validateEmail(value){
       if (/^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(value))
   {

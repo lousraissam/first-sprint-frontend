@@ -16,7 +16,8 @@ export default [
 { path : '/dashboardMaire', component : dashboardMaire },
 { path : '/dashboardResponsable', component : dashboardResponsable },
 { path : '/dashboardAdmin', component : dashboardAdmin },
-//{ path : <p>${process.env.CLIENT_URL}/users/Activate${token}</p> , component : signin}
+
+
 ];
 
 

@@ -64,7 +64,7 @@
 </template>
 
 <script>
-const fetch = require('node-fetch');
+import axios from 'axios';
 export default {
   name: 'signin',
   data() {
@@ -80,27 +80,20 @@ export default {
         email: this.email,
         password: this.password
       }    
-      fetch('http://localhost:5000/api/login', {
-   method:'post',
-   body:JSON.stringify(user),
-   headers: {
-                'Content-Type': 'application/json',
-                Accept:"application/json",
-            }
-  
-  })
-
-  .then((res) => res.json())
+      axios.post('http://localhost:5000/api/login', user ,{headers: {
+      'Content-type': 'application/x-www-form-urlencoded',
+      }})
         .then(res => {
           //if successfull
           if (res.status === 200) {
             localStorage.setItem('token', res.data.token);
-            
+            this.$router.push('/signin');
           }
+        }, err => {
+          console.log(err.response);
+          this.error = err.response.data.error
         })
-        .catch((err)=>console.log(err))
-        }
     }
   }
-
+}
 </script>

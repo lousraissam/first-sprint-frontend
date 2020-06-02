@@ -5,7 +5,6 @@ import VueRouter from 'vue-router';
 import VueResource from 'vue-resource';
 import Routes from './routes';
 import store from './store';
-
 const fetch = require('node-fetch');
 
 

@@ -91,16 +91,19 @@ export default {
   })
 
   .then((res) => res.json())
+            .then((data) =>  console.log(data))
+            .catch((err)=>console.log(err))
         .then(res => {
           //if successfull
           if (res.status === 200) {
             localStorage.setItem('token', res.data.token);
-            
+            this.$router.push('/signin');
           }
+        }, err => {
+          console.log(err.response);
+          this.error = err.response.data.error
         })
-        .catch((err)=>console.log(err))
-        }
     }
   }
-
+}
 </script>

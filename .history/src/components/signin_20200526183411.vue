@@ -81,6 +81,7 @@ export default {
         password: this.password
       }    
       fetch('http://localhost:5000/api/login', {
+        
    method:'post',
    body:JSON.stringify(user),
    headers: {
@@ -91,16 +92,10 @@ export default {
   })
 
   .then((res) => res.json())
-        .then(res => {
-          //if successfull
-          if (res.status === 200) {
-            localStorage.setItem('token', res.data.token);
-            
-          }
-        })
-        .catch((err)=>console.log(err))
-        }
+            .then((data) =>  console.log(data))
+            .catch((err)=>console.log(err))
+  
     }
   }
-
+}
 </script>
